@@ -1,0 +1,235 @@
+{% extends "base.html" %}
+{% block title %}Predict'Student - À propos{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/about.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<!-- HERO -->
+<section class="about-hero">
+    <div class="about-hero-content animate-fade-in-up">
+        <div class="about-hero-icon">
+            <i class="fas fa-graduation-cap"></i>
+        </div>
+        <h1>À propos de Predict'Student</h1>
+        <p>Découvrez l'histoire, la mission et la technologie derrière notre plateforme de prédiction académique.</p>
+    </div>
+</section>
+
+<!-- MISSION -->
+<section class="about-mission animate-fade-in-up">
+    <div class="about-container">
+        <div class="mission-grid">
+            <div class="mission-text">
+                <h2><i class="fas fa-bullseye"></i> Notre Mission</h2>
+                <p>
+                    Predict'Student est une plateforme innovante conçue pour aider les établissements 
+                    d'enseignement, les conseillers pédagogiques et les étudiants à anticiper les 
+                    performances académiques.
+                </p>
+                <p>
+                    Grâce à l'intelligence artificielle et au Machine Learning, notre outil analyse 
+                    14 critères clés pour prédire avec précision la note finale d'un étudiant et 
+                    identifier les risques d'échec avant qu'il ne soit trop tard.
+                </p>
+                <div class="mission-values">
+                    <div class="value-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Prédictions fiables à 98%</span>
+                    </div>
+                    <div class="value-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Analyse de 14 critères</span>
+                    </div>
+                    <div class="value-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>3 modèles comparés</span>
+                    </div>
+                    <div class="value-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>1000 étudiants analysés</span>
+                    </div>
+                </div>
+            </div>
+            <div class="mission-image">
+                <div class="mission-card">
+                    <i class="fas fa-brain"></i>
+                    <h3>Intelligence Artificielle</h3>
+                    <p>Modèles entraînés sur des données réelles d'étudiants pour des prédictions précises.</p>
+                </div>
+                <div class="mission-card">
+                    <i class="fas fa-shield-halved"></i>
+                    <h3>Fiable & Sécurisé</h3>
+                    <p>Aucune donnée stockée. Les prédictions sont calculées en temps réel.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- COMMENT ÇA MARCHE -->
+<section class="about-how">
+    <div class="about-container">
+        <h2><i class="fas fa-cogs"></i> Comment ça fonctionne ?</h2>
+        <div class="how-steps">
+            <div class="how-step">
+                <div class="how-step-number">01</div>
+                <div class="how-step-icon">
+                    <i class="fas fa-pencil-alt"></i>
+                </div>
+                <h3>Saisie des données</h3>
+                <p>Remplissez le formulaire avec les 14 caractéristiques de l'étudiant : âge, heures d'étude, absences, notes, etc.</p>
+            </div>
+            <div class="how-step">
+                <div class="how-step-number">02</div>
+                <div class="how-step-icon">
+                    <i class="fas fa-microchip"></i>
+                </div>
+                <h3>Analyse par l'IA</h3>
+                <p>Notre pipeline de Machine Learning traite les données via StandardScaler, OneHotEncoder et 3 modèles de régression.</p>
+            </div>
+            <div class="how-step">
+                <div class="how-step-number">03</div>
+                <div class="how-step-icon">
+                    <i class="fas fa-chart-bar"></i>
+                </div>
+                <h3>Résultat instantané</h3>
+                <p>Obtenez la note prédite, la mention, une jauge visuelle et des recommandations personnalisées.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- TECHNOLOGIES -->
+<section class="about-tech">
+    <div class="about-container">
+        <h2><i class="fas fa-laptop-code"></i> Technologies utilisées</h2>
+        <div class="tech-grid">
+            <div class="tech-card">
+                <i class="fab fa-python"></i>
+                <h3>Python</h3>
+                <p>Langage de programmation principal pour le traitement des données et l'entraînement des modèles.</p>
+            </div>
+            <div class="tech-card">
+                <i class="fas fa-flask"></i>
+                <h3>Flask</h3>
+                <p>Framework web léger pour l'API backend et le rendu des pages HTML.</p>
+            </div>
+            <div class="tech-card">
+                <i class="fas fa-robot"></i>
+                <h3>Scikit-learn</h3>
+                <p>Bibliothèque Machine Learning pour la Régression Linéaire, Random Forest et Gradient Boosting.</p>
+            </div>
+            <div class="tech-card">
+                <i class="fab fa-html5"></i>
+                <h3>HTML5 / CSS3</h3>
+                <p>Structure et design responsive de l'interface utilisateur.</p>
+            </div>
+            <div class="tech-card">
+                <i class="fab fa-js"></i>
+                <h3>JavaScript</h3>
+                <p>Interactions dynamiques, animations, appels API et affichage des résultats.</p>
+            </div>
+            <div class="tech-card">
+                <i class="fas fa-chart-line"></i>
+                <h3>Régression</h3>
+                <p>3 algorithmes comparés : Régression Linéaire, Random Forest Regressor, Gradient Boosting Regressor.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- EQUIPE -->
+<section class="about-team">
+    <div class="about-container">
+        <h2><i class="fas fa-users"></i> Notre équipe</h2>
+        <div class="team-grid">
+            <div class="team-card">
+                <div class="team-avatar">
+                    <i class="fas fa-user-graduate"></i>
+                </div>
+                <h3>Baraka Ntwali</h3>
+                <span class="team-role">Développeur & Data Scientist</span>
+                <p>Étudiant en L2 Informatique de Gestion, passionné par l'Intelligence Artificielle et le développement web.</p>
+                <div class="team-social">
+                    <a href="https://github.com/barakantwali" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://linkedin.com/in/barakantwali" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="mailto:barakantwali06@gmail.com"><i class="fas fa-envelope"></i></a>
+                    <a href="https://facebook.com/BarakaNtwaliPuruzi" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+            <div class="team-card">
+                <div class="team-avatar">
+                    <i class="fas fa-user-graduate"></i>
+                </div>
+                <h3>NSENGIYUNMVA KARIRA</h3>
+                <span class="team-role">Développeur & Data Scientist</span>
+                <p>Étudiant en L2 Informatique de Gestion, spécialisé en analyse de données et Machine Learning.</p>
+                <div class="team-social">
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CONTEXTE -->
+<section class="about-context">
+    <div class="about-container">
+        <h2><i class="fas fa-university"></i> Contexte académique</h2>
+        <div class="context-card">
+            <div class="context-item">
+                <i class="fas fa-school"></i>
+                <div>
+                    <h4>Université</h4>
+                    <p>UAGO - Université Adventiste de Goma</p>
+                </div>
+            </div>
+            <div class="context-item">
+                <i class="fas fa-laptop"></i>
+                <div>
+                    <h4>Filière</h4>
+                    <p>L2 Informatique de Gestion</p>
+                </div>
+            </div>
+            <div class="context-item">
+                <i class="fas fa-book"></i>
+                <div>
+                    <h4>Cours</h4>
+                    <p>Machine Learning</p>
+                </div>
+            </div>
+            <div class="context-item">
+                <i class="fas fa-user-tie"></i>
+                <div>
+                    <h4>Enseignant</h4>
+                    <p>M. Joseph Kaniki</p>
+                </div>
+            </div>
+            <div class="context-item">
+                <i class="fas fa-calendar-check"></i>
+                <div>
+                    <h4>Projet</h4>
+                    <p>Projet Final - Juillet 2025</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="about-cta">
+    <div class="about-container">
+        <h2>Prêt à essayer ?</h2>
+        <p>Testez notre outil gratuitement et découvrez la puissance de l'IA appliquée à l'éducation.</p>
+        <a href="{{ url_for('formulaire') }}" class="btn btn-primary btn-lg">
+            <i class="fas fa-rocket"></i> Lancer une prédiction
+        </a>
+    </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,174 @@
+{% extends "base.html" %}
+{% block title %}Predict'Student - Accueil{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<!-- HERO SECTION -->
+<section class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content animate-fade-in-up">
+        <div class="hero-badge">
+            <i class="fas fa-brain"></i>
+            <span>Intelligence Artificielle au service de l'éducation</span>
+        </div>
+        <h1>Prédisez la réussite<br>académique de vos étudiants</h1>
+        <p class="hero-subtitle">
+            Une plateforme intelligente qui analyse 14 critères pour anticiper 
+            les performances et identifier les étudiants à risque avant l'examen final.
+        </p>
+        <div class="hero-actions">
+            <a href="{{ url_for('formulaire') }}" class="btn btn-primary btn-lg">
+                <i class="fas fa-rocket"></i> Lancer une prédiction
+            </a>
+            <a href="#stats" class="btn btn-secondary btn-lg">
+                <i class="fas fa-chart-bar"></i> Découvrir les statistiques
+            </a>
+        </div>
+    </div>
+    <div class="hero-scroll">
+        <span>Défiler pour explorer</span>
+        <i class="fas fa-chevron-down"></i>
+    </div>
+</section>
+
+<!-- STATS SECTION -->
+<section id="stats" class="stats-section">
+    <div class="stats-container">
+        <div class="stat-card">
+            <div class="stat-icon">
+                <i class="fas fa-users"></i>
+            </div>
+            <div class="stat-number">1 000</div>
+            <div class="stat-label">Étudiants analysés</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon">
+                <i class="fas fa-list-check"></i>
+            </div>
+            <div class="stat-number">14</div>
+            <div class="stat-label">Critères d'évaluation</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon">
+                <i class="fas fa-microchip"></i>
+            </div>
+            <div class="stat-number">3</div>
+            <div class="stat-label">Modèles comparés</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon">
+                <i class="fas fa-bullseye"></i>
+            </div>
+            <div class="stat-number">98%</div>
+            <div class="stat-label">Précision du modèle</div>
+        </div>
+    </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-section">
+    <div class="section-header">
+        <h2>Comment ça fonctionne ?</h2>
+        <p>Trois étapes simples pour obtenir une prédiction fiable</p>
+    </div>
+    <div class="steps-container">
+        <div class="step-card">
+            <div class="step-number">01</div>
+            <div class="step-icon">
+                <i class="fas fa-pencil-alt"></i>
+            </div>
+            <h3>Saisissez les données</h3>
+            <p>Remplissez le formulaire avec les 14 caractéristiques de l'étudiant : âge, heures d'étude, absences, notes antérieures...</p>
+        </div>
+        <div class="step-arrow">
+            <i class="fas fa-arrow-right"></i>
+        </div>
+        <div class="step-card">
+            <div class="step-number">02</div>
+            <div class="step-icon">
+                <i class="fas fa-cogs"></i>
+            </div>
+            <h3>L'IA analyse</h3>
+            <p>Notre modèle entraîné sur 1 000 étudiants traite les données et calcule la note finale probable en quelques millisecondes.</p>
+        </div>
+        <div class="step-arrow">
+            <i class="fas fa-arrow-right"></i>
+        </div>
+        <div class="step-card">
+            <div class="step-number">03</div>
+            <div class="step-icon">
+                <i class="fas fa-chart-pie"></i>
+            </div>
+            <h3>Obtenez le résultat</h3>
+            <p>Visualisez la note prédite, la mention, une jauge de performance et des conseils personnalisés pour chaque étudiant.</p>
+        </div>
+
+        <div class="step-card">
+            <div class="step-number">04</div>
+            <div class="step-icon">
+                <i class="fas fa-history"></i>
+            </div>
+            <h3>Consultez l'historique</h3>
+            <p>Retrouvez toutes vos prédictions passées, comparez les résultats et exportez les données en CSV.</p>
+        </div>
+    </div>
+</section>
+
+<!-- FEATURES SECTION -->
+<section class="features-section">
+    <div class="section-header">
+        <h2>Pourquoi utiliser Predict'Student ?</h2>
+        <p>Des fonctionnalités pensées pour les professionnels de l'éducation</p>
+    </div>
+    <div class="features-grid">
+        <div class="feature-card">
+            <i class="fas fa-bolt feature-icon"></i>
+            <h4>Rapide</h4>
+            <p>Prédiction instantanée grâce à un modèle optimisé et pré-entraîné.</p>
+        </div>
+        <div class="feature-card">
+            <i class="fas fa-shield-halved feature-icon"></i>
+            <h4>Fiable</h4>
+            <p>Modèle validé avec un coefficient R² supérieur à 0.98 sur les données de test.</p>
+        </div>
+        <div class="feature-card">
+            <i class="fas fa-mobile-screen feature-icon"></i>
+            <h4>Responsive</h4>
+            <p>Application accessible sur ordinateur, tablette et smartphone.</p>
+        </div>
+        <div class="feature-card">
+            <i class="fas fa-lock feature-icon"></i>
+            <h4>Sécurisé</h4>
+            <p>Aucune donnée stockée. Les prédictions sont calculées en temps réel.</p>
+        </div>
+        <div class="feature-card">
+            <i class="fas fa-file-export feature-icon"></i>
+            <h4>Exportable</h4>
+            <p>Téléchargez les résultats au format PDF pour vos rapports.</p>
+        </div>
+        <div class="feature-card">
+            <i class="fas fa-graduation-cap feature-icon"></i>
+            <h4>Pédagogique</h4>
+            <p>Conseils personnalisés pour améliorer les performances de chaque étudiant.</p>
+        </div>
+    </div>
+</section>
+
+<!-- CTA SECTION -->
+<section class="cta-section">
+    <div class="cta-content">
+        <h2>Prêt à anticiper la réussite ?</h2>
+        <p>Utilisez notre outil gratuitement et identifiez les étudiants qui ont besoin d'un accompagnement avant qu'il ne soit trop tard.</p>
+        <a href="{{ url_for('formulaire') }}" class="btn btn-success btn-lg">
+            <i class="fas fa-rocket"></i> Commencer maintenant
+        </a>
+        <a href="{{ url_for('about') }}" class="btn btn-secondary btn-lg">
+            <i class="fas fa-info-circle"></i> En savoir plus
+        </a>
+    </div>
+</section>
+{% endblock %}

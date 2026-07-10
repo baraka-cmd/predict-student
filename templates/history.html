@@ -1,0 +1,140 @@
+{% extends "base.html" %}
+{% block title %}Predict'Student - Historique{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/history.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<div class="history-page animate-fade-in">
+
+    <!-- EN-TÊTE -->
+    <div class="history-header">
+        <div class="history-header-info">
+            <h1><i class="fas fa-history"></i> Historique des prédictions</h1>
+            <p>Retrouvez toutes vos prédictions précédentes et consultez leurs détails.</p>
+        </div>
+        <div class="history-header-actions">
+            <button class="btn btn-secondary" id="export-csv-btn">
+                <i class="fas fa-file-csv"></i> Exporter CSV
+            </button>
+            <button class="btn btn-secondary" id="clear-history-btn">
+                <i class="fas fa-trash-alt"></i> Tout effacer
+            </button>
+        </div>
+    </div>
+
+    <!-- COMPTEUR -->
+    <div class="history-counter" id="history-counter">
+        <i class="fas fa-database"></i> <span id="history-count">0</span> prédiction(s) enregistrée(s)
+    </div>
+
+    <!-- TABLEAU -->
+    <div class="history-table-container">
+        <table class="history-table" id="history-table">
+            <thead>
+                <tr>
+                    <th><i class="fas fa-calendar-alt"></i> Date</th>
+                    <th><i class="fas fa-bullseye"></i> Note</th>
+                    <th><i class="fas fa-trophy"></i> Mention</th>
+                    <th><i class="fas fa-book"></i> Heures étude</th>
+                    <th><i class="fas fa-calendar-times"></i> Absences</th>
+                    <th><i class="fas fa-tasks"></i> Exercices</th>
+                    <th><i class="fas fa-file-alt"></i> Mi-semestre</th>
+                    <th><i class="fas fa-eye"></i> Détail</th>
+                </tr>
+            </thead>
+            <tbody id="history-tbody">
+                <!-- Rempli dynamiquement par JS -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ÉTAT VIDE -->
+    <div class="history-empty" id="history-empty" style="display: none;">
+        <div class="empty-icon">
+            <i class="fas fa-inbox"></i>
+        </div>
+        <h2>Aucune prédiction enregistrée</h2>
+        <p>Vous n'avez pas encore effectué de prédiction. Lancez votre première analyse !</p>
+        <a href="{{ url_for('formulaire') }}" class="btn btn-primary btn-lg">
+            <i class="fas fa-rocket"></i> Faire une prédiction
+        </a>
+    </div>
+
+</div>
+
+<!-- MODALE DE DÉTAIL -->
+<div class="modal-overlay" id="detail-modal" style="display: none;">
+    <div class="modal-container">
+        <div class="modal-header">
+            <h2><i class="fas fa-chart-bar"></i> Détail de la prédiction</h2>
+            <button class="modal-close" id="modal-close-btn">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="modal-body">
+            
+            <!-- Résumé -->
+            <div class="modal-summary">
+                <div class="modal-gauge">
+                    <svg viewBox="0 0 200 200" class="modal-gauge-svg">
+                        <circle class="modal-gauge-bg" cx="100" cy="100" r="75"/>
+                        <circle class="modal-gauge-fill" cx="100" cy="100" r="75" id="modal-gauge-fill"/>
+                    </svg>
+                    <div class="modal-gauge-center">
+                        <span class="modal-gauge-note" id="modal-note">0</span>
+                        <span class="modal-gauge-total">/20</span>
+                    </div>
+                </div>
+                <div class="modal-summary-info">
+                    <div class="modal-summary-item">
+                        <i class="fas fa-calendar-alt"></i>
+                        <div>
+                            <span class="modal-label">Date</span>
+                            <span class="modal-value" id="modal-date">-</span>
+                        </div>
+                    </div>
+                    <div class="modal-summary-item">
+                        <i class="fas fa-trophy"></i>
+                        <div>
+                            <span class="modal-label">Mention</span>
+                            <span class="modal-value" id="modal-mention">-</span>
+                        </div>
+                    </div>
+                    <div class="modal-summary-item">
+                        <i class="fas fa-lightbulb"></i>
+                        <div>
+                            <span class="modal-label">Conseil</span>
+                            <span class="modal-value modal-conseil" id="modal-conseil">-</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Détails complets -->
+            <div class="modal-details">
+                <h3><i class="fas fa-list-ul"></i> Toutes les valeurs saisies</h3>
+                <div class="modal-details-grid" id="modal-details-grid">
+                    <!-- Rempli dynamiquement par JS -->
+                </div>
+            </div>
+
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-secondary" id="modal-close-btn2">
+                <i class="fas fa-times"></i> Fermer
+            </button>
+            <a href="{{ url_for('formulaire') }}" class="btn btn-primary">
+                <i class="fas fa-rocket"></i> Nouvelle prédiction
+            </a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/history.js') }}"></script>
+{% endblock %}

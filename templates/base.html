@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Predict'Student - Prédiction de la réussite académique des étudiants">
+    <title>{% block title %}Predict'Student{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='fontawesome/css/all.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="{{ url_for('accueil') }}" class="navbar-brand">
+            <i class="fas fa-graduation-cap"></i>
+            <span>Predict'Student</span>
+        </a>
+        <button class="hamburger" id="hamburger-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <ul class="navbar-links" id="navbar-links">
+            <li><a href="{{ url_for('accueil') }}" class="{% if request.endpoint == 'accueil' %}active{% endif %}">Accueil</a></li>
+            <li><a href="{{ url_for('formulaire') }}" class="{% if request.endpoint == 'formulaire' %}active{% endif %}">Prédiction</a></li>
+            <li><a href="{{ url_for('history') }}" class="{% if request.endpoint == 'history' %}active{% endif %}">Historique</a></li>
+            <li><a href="{{ url_for('about') }}" class="{% if request.endpoint == 'about' %}active{% endif %}">À propos</a></li>
+        </ul>
+    </nav>
+
+    <main class="main-content">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <i class="fas fa-graduation-cap"></i>
+                <h3>Predict'Student</h3>
+                <p>Intelligence Artificielle au service de la réussite académique.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Navigation</h4>
+                <ul>
+                    <li><a href="{{ url_for('accueil') }}"><i class="fas fa-chevron-right"></i> Accueil</a></li>
+                    <li><a href="{{ url_for('formulaire') }}"><i class="fas fa-chevron-right"></i> Nouvelle prédiction</a></li>
+                    <li><a href="{{ url_for('history') }}"><i class="fas fa-chevron-right"></i> Historique</a></li>
+                    <li><a href="{{ url_for('about') }}"><i class="fas fa-chevron-right"></i> À propos</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4>Contact</h4>
+                <ul>
+                    <li><i class="fas fa-envelope"></i> barakantwali06@gmail.com</li>
+                    <li><i class="fas fa-phone"></i> +243 000 000 000</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Goma, Nord-Kivu, RDC</li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <h4>Suivez-nous</h4>
+                <div class="social-icons">
+                    <a href="https://github.com/barakantwali" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://linkedin.com/in/barakantwali" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://facebook.com/BarakaNtwaliPuruzi" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="mailto:barakantwali06@gmail.com"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 <span>Predict'Student</span> | Projet Final Machine Learning | L2 IG UAGO</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('hamburger-btn').addEventListener('click', function() {
+            this.classList.toggle('active');
+            document.getElementById('navbar-links').classList.toggle('active');
+        });
+    </script>
+
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

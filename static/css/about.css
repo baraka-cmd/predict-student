@@ -1,0 +1,603 @@
+/* ============================================ */
+/* PREDICT'STUDENT - STYLES PAGE A PROPOS       */
+/* ============================================ */
+
+/* ---------- ABOUT HERO ---------- */
+.about-hero {
+    background: linear-gradient(135deg, #0d1b2a 0%, #1b2838 50%, #1a73e8 100%);
+    padding: 5rem 2rem;
+    text-align: center;
+    margin: -2rem -2rem 0 -2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.about-hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at 30% 50%, rgba(26, 115, 232, 0.15) 0%, transparent 60%);
+    z-index: 1;
+}
+
+.about-hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.about-hero-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem auto;
+    font-size: 2.2rem;
+    color: var(--white);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.about-hero h1 {
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 1rem;
+    letter-spacing: -1px;
+}
+
+.about-hero p {
+    font-size: 1.15rem;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.8;
+}
+
+/* ---------- CONTAINER ---------- */
+.about-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* ---------- MISSION ---------- */
+.about-mission {
+    padding: 5rem 0;
+}
+
+.about-mission h2,
+.about-how h2,
+.about-tech h2,
+.about-team h2,
+.about-context h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 2.5rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    letter-spacing: -0.5px;
+}
+
+.about-mission h2 i,
+.about-how h2 i,
+.about-tech h2 i,
+.about-team h2 i,
+.about-context h2 i {
+    color: var(--primary);
+    font-size: 1.8rem;
+}
+
+.mission-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.mission-text p {
+    font-size: 1.05rem;
+    color: var(--gray-700);
+    line-height: 1.9;
+    margin-bottom: 1.5rem;
+}
+
+.mission-values {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.value-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0.8rem 1rem;
+    background: var(--primary-light);
+    border-radius: var(--radius-sm);
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--primary-dark);
+}
+
+.value-item i {
+    color: var(--secondary);
+    font-size: 1rem;
+}
+
+.mission-image {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.mission-card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-normal);
+    border-left: 4px solid var(--primary);
+}
+
+.mission-card:hover {
+    transform: translateX(8px);
+    box-shadow: var(--shadow-lg);
+}
+
+.mission-card i {
+    font-size: 2rem;
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
+.mission-card h3 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--dark);
+    margin-bottom: 0.5rem;
+}
+
+.mission-card p {
+    font-size: 0.95rem;
+    color: var(--gray-500);
+    line-height: 1.6;
+}
+
+/* ---------- HOW ---------- */
+.about-how {
+    padding: 5rem 0;
+    background: var(--gray-100);
+    margin: 0 -2rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+.how-steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.how-step {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    padding: 2.5rem 2rem;
+    text-align: center;
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-normal);
+    position: relative;
+    overflow: hidden;
+}
+
+.how-step::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    transform: scaleX(0);
+    transition: transform var(--transition-normal);
+}
+
+.how-step:hover::before {
+    transform: scaleX(1);
+}
+
+.how-step:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lg);
+}
+
+.how-step-number {
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--gray-100);
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    line-height: 1;
+    transition: color var(--transition-normal);
+}
+
+.how-step:hover .how-step-number {
+    color: rgba(26, 115, 232, 0.08);
+}
+
+.how-step-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: var(--primary-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem auto;
+    font-size: 1.8rem;
+    color: var(--primary);
+    transition: all var(--transition-normal);
+}
+
+.how-step:hover .how-step-icon {
+    background: var(--primary);
+    color: var(--white);
+    box-shadow: 0 8px 25px rgba(26, 115, 232, 0.3);
+}
+
+.how-step h3 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--dark);
+    margin-bottom: 0.8rem;
+}
+
+.how-step p {
+    font-size: 0.95rem;
+    color: var(--gray-500);
+    line-height: 1.7;
+}
+
+/* ---------- TECH ---------- */
+.about-tech {
+    padding: 5rem 0;
+}
+
+.tech-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.tech-card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    text-align: center;
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-normal);
+    border: 1px solid transparent;
+}
+
+.tech-card:hover {
+    border-color: var(--gray-300);
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-4px);
+}
+
+.tech-card i {
+    font-size: 2.5rem;
+    color: var(--primary);
+    margin-bottom: 1.2rem;
+    transition: all var(--transition-normal);
+}
+
+.tech-card:hover i {
+    transform: scale(1.2);
+    color: var(--primary-dark);
+}
+
+.tech-card h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--dark);
+    margin-bottom: 0.6rem;
+}
+
+.tech-card p {
+    font-size: 0.9rem;
+    color: var(--gray-500);
+    line-height: 1.6;
+}
+
+/* ---------- TEAM ---------- */
+.about-team {
+    padding: 5rem 0;
+    background: var(--gray-100);
+    margin: 0 -2rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.team-card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    padding: 2.5rem 2rem;
+    text-align: center;
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-normal);
+}
+
+.team-card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-4px);
+}
+
+.team-avatar {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background: var(--primary-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.2rem auto;
+    font-size: 2.5rem;
+    color: var(--primary);
+    transition: all var(--transition-normal);
+}
+
+.team-card:hover .team-avatar {
+    background: var(--primary);
+    color: var(--white);
+}
+
+.team-card h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--dark);
+    margin-bottom: 0.3rem;
+}
+
+.team-role {
+    display: inline-block;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--primary);
+    background: var(--primary-light);
+    padding: 4px 14px;
+    border-radius: 50px;
+    margin-bottom: 1rem;
+}
+
+.team-card p {
+    font-size: 0.9rem;
+    color: var(--gray-500);
+    line-height: 1.6;
+    margin-bottom: 1.2rem;
+}
+
+.team-social {
+    display: flex;
+    justify-content: center;
+    gap: 0.8rem;
+}
+
+.team-social a {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: var(--gray-100);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gray-500);
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: all var(--transition-fast);
+}
+
+.team-social a:hover {
+    background: var(--primary);
+    color: var(--white);
+    transform: translateY(-3px);
+}
+
+/* ---------- CONTEXT ---------- */
+.about-context {
+    padding: 5rem 0;
+}
+
+.context-card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    padding: 2.5rem;
+    box-shadow: var(--shadow-md);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.context-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.context-item i {
+    font-size: 1.5rem;
+    color: var(--primary);
+    margin-top: 3px;
+}
+
+.context-item h4 {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--gray-500);
+    margin-bottom: 3px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.context-item p {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--dark);
+}
+
+/* ---------- CTA ---------- */
+.about-cta {
+    padding: 5rem 0;
+    text-align: center;
+    background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+    margin: 0 -2rem -2rem -2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.about-cta::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at 30% 70%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+    z-index: 1;
+}
+
+.about-cta .about-container {
+    position: relative;
+    z-index: 2;
+}
+
+.about-cta h2 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 1rem;
+    justify-content: center;
+}
+
+.about-cta p {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 2rem;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 992px) {
+    .mission-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .how-steps {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+        margin: 0 auto;
+    }
+
+    .tech-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .context-card {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .about-hero h1 {
+        font-size: 2rem;
+    }
+
+    .about-hero {
+        padding: 3rem 1.5rem;
+        margin: -1rem -1rem 0 -1rem;
+    }
+
+    .about-mission,
+    .about-tech,
+    .about-team,
+    .about-context {
+        padding: 3rem 0;
+    }
+
+    .about-how {
+        padding: 3rem 1rem;
+        margin: 0 -1rem;
+    }
+
+    .about-team {
+        padding: 3rem 1rem;
+        margin: 0 -1rem;
+    }
+
+    .tech-grid {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    .team-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .context-card {
+        grid-template-columns: 1fr;
+    }
+
+    .mission-values {
+        grid-template-columns: 1fr;
+    }
+
+    .about-mission h2,
+    .about-how h2,
+    .about-tech h2,
+    .about-team h2,
+    .about-context h2 {
+        font-size: 1.5rem;
+    }
+
+    .about-cta {
+        padding: 3rem 1rem;
+        margin: 0 -1rem -1rem -1rem;
+    }
+
+    .about-cta h2 {
+        font-size: 1.6rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-hero h1 {
+        font-size: 1.6rem;
+    }
+
+    .about-hero p {
+        font-size: 0.95rem;
+    }
+
+    .how-step {
+        padding: 2rem 1.5rem;
+    }
+
+    .context-card {
+        padding: 1.5rem;
+    }
+}

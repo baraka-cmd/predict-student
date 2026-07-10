@@ -1,0 +1,298 @@
+{% extends "base.html" %}
+{% block title %}Predict'Student - Nouvelle Prédiction{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/formulaire.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<div class="form-page-header animate-fade-in">
+    <h1><i class="fas fa-clipboard-list"></i> Nouvelle prédiction</h1>
+    <p>Complétez les informations de l'étudiant pour obtenir une prédiction de sa note finale</p>
+</div>
+
+<!-- BARRE DE PROGRESSION -->
+<div class="progress-bar-container animate-fade-in">
+    <div class="progress-steps">
+        <div class="progress-step active" data-step="1">
+            <div class="step-circle"><i class="fas fa-user"></i></div>
+            <span>Profil Personnel</span>
+        </div>
+        <div class="progress-line"></div>
+        <div class="progress-step" data-step="2">
+            <div class="step-circle"><i class="fas fa-book-open"></i></div>
+            <span>Vie Étudiante</span>
+        </div>
+        <div class="progress-line"></div>
+        <div class="progress-step" data-step="3">
+            <div class="step-circle"><i class="fas fa-trophy"></i></div>
+            <span>Performance</span>
+        </div>
+    </div>
+</div>
+
+<!-- FORMULAIRE -->
+<form id="prediction-form" class="prediction-form animate-fade-in-up">
+
+    <!-- SECTION 1 : PROFIL PERSONNEL -->
+    <div class="form-section" id="section-1">
+        <div class="section-header">
+            <div class="section-icon">
+                <i class="fas fa-user-circle"></i>
+            </div>
+            <div class="section-info">
+                <h2>Profil Personnel</h2>
+                <p>Informations générales sur l'étudiant</p>
+            </div>
+        </div>
+
+        <div class="form-grid">
+            <div class="form-group">
+                <label for="Age">
+                    <i class="fas fa-calendar-alt"></i> Âge
+                </label>
+                <div class="input-wrapper">
+                    <input type="number" id="Age" name="Age" min="18" max="30" placeholder="Ex: 22" required>
+                    <span class="input-unit">ans</span>
+                </div>
+                <small>Entre 18 et 30 ans</small>
+            </div>
+
+            <div class="form-group">
+                <label for="Genre">
+                    <i class="fas fa-venus-mars"></i> Genre
+                </label>
+                <div class="select-wrapper">
+                    <select id="Genre" name="Genre" required>
+                        <option value="" disabled selected>Sélectionner le genre</option>
+                        <option value="Homme">Homme</option>
+                        <option value="Femme">Femme</option>
+                    </select>
+                    <i class="fas fa-chevron-down select-arrow"></i>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="Bourse">
+                    <i class="fas fa-hand-holding-heart"></i> Bourse
+                </label>
+                <div class="select-wrapper">
+                    <select id="Bourse" name="Bourse" required>
+                        <option value="" disabled selected>Boursier ?</option>
+                        <option value="Oui">Oui</option>
+                        <option value="Non">Non</option>
+                    </select>
+                    <i class="fas fa-chevron-down select-arrow"></i>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="Niveau_Parents">
+                    <i class="fas fa-user-graduate"></i> Niveau d'éducation des parents
+                </label>
+                <div class="select-wrapper">
+                    <select id="Niveau_Parents" name="Niveau_Parents" required>
+                        <option value="" disabled selected>Sélectionner le niveau</option>
+                        <option value="Secondaire">Secondaire</option>
+                        <option value="Licence">Licence</option>
+                        <option value="Master">Master</option>
+                        <option value="Doctorat">Doctorat</option>
+                    </select>
+                    <i class="fas fa-chevron-down select-arrow"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 2 : VIE ÉTUDIANTE -->
+    <div class="form-section" id="section-2">
+        <div class="section-header">
+            <div class="section-icon">
+                <i class="fas fa-clock"></i>
+            </div>
+            <div class="section-info">
+                <h2>Vie Étudiante</h2>
+                <p>Habitudes de vie et organisation</p>
+            </div>
+        </div>
+
+        <div class="form-grid">
+            <div class="form-group">
+                <label for="Heures_Etude_Semaine">
+                    <i class="fas fa-book"></i> Heures d'étude / semaine
+                </label>
+                <div class="range-group">
+                    <input type="range" id="Heures_Etude_Semaine" name="Heures_Etude_Semaine" min="2" max="50" value="15" step="1">
+                    <div class="range-value">
+                        <span id="Heures_Etude_Semaine_val">15</span> h
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="Heures_Sommeil_Semaine">
+                    <i class="fas fa-moon"></i> Heures de sommeil / semaine
+                </label>
+                <div class="range-group">
+                    <input type="range" id="Heures_Sommeil_Semaine" name="Heures_Sommeil_Semaine" min="28" max="70" value="49" step="1">
+                    <div class="range-value">
+                        <span id="Heures_Sommeil_Semaine_val">49</span> h
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="Absences_Total">
+                    <i class="fas fa-calendar-times"></i> Nombre total d'absences
+                </label>
+                <div class="input-wrapper">
+                    <input type="number" id="Absences_Total" name="Absences_Total" min="0" max="25" placeholder="Ex: 5" required>
+                    <span class="input-unit">jours</span>
+                </div>
+                <small>Entre 0 et 25 absences</small>
+            </div>
+
+            <div class="form-group">
+                <label for="Travail_Extrascolaire">
+                    <i class="fas fa-briefcase"></i> Travail extrascolaire
+                </label>
+                <div class="select-wrapper">
+                    <select id="Travail_Extrascolaire" name="Travail_Extrascolaire" required>
+                        <option value="" disabled selected>Sélectionner</option>
+                        <option value="Aucun">Aucun</option>
+                        <option value="Temps_partiel">Temps partiel</option>
+                        <option value="Temps_plein">Temps plein</option>
+                    </select>
+                    <i class="fas fa-chevron-down select-arrow"></i>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="Acces_Internet">
+                    <i class="fas fa-wifi"></i> Qualité de l'accès Internet
+                </label>
+                <div class="select-wrapper">
+                    <select id="Acces_Internet" name="Acces_Internet" required>
+                        <option value="" disabled selected>Sélectionner</option>
+                        <option value="Haut_debit">Haut débit</option>
+                        <option value="Moyen">Moyen</option>
+                        <option value="Limite">Limité</option>
+                    </select>
+                    <i class="fas fa-chevron-down select-arrow"></i>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="Activite_Physique">
+                    <i class="fas fa-running"></i> Activité physique
+                </label>
+                <div class="select-wrapper">
+                    <select id="Activite_Physique" name="Activite_Physique" required>
+                        <option value="" disabled selected>Sélectionner</option>
+                        <option value="Aucune">Aucune</option>
+                        <option value="Moderee">Modérée</option>
+                        <option value="Intensive">Intensive</option>
+                    </select>
+                    <i class="fas fa-chevron-down select-arrow"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 3 : PERFORMANCE ACADÉMIQUE -->
+    <div class="form-section" id="section-3">
+        <div class="section-header">
+            <div class="section-icon">
+                <i class="fas fa-star"></i>
+            </div>
+            <div class="section-info">
+                <h2>Performance Académique</h2>
+                <p>Résultats et engagement dans les études</p>
+            </div>
+        </div>
+
+        <div class="form-grid">
+            <div class="form-group">
+                <label for="Note_Mi_Semestre">
+                    <i class="fas fa-file-alt"></i> Note de mi-semestre
+                </label>
+                <div class="range-group">
+                    <input type="range" id="Note_Mi_Semestre" name="Note_Mi_Semestre" min="0" max="20" value="10" step="0.5">
+                    <div class="range-value">
+                        <span id="Note_Mi_Semestre_val">10</span> /20
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="Exercices_Soumis">
+                    <i class="fas fa-tasks"></i> Exercices soumis
+                </label>
+                <div class="input-wrapper">
+                    <input type="number" id="Exercices_Soumis" name="Exercices_Soumis" min="0" max="10" placeholder="Ex: 7" required>
+                    <span class="input-unit">/10</span>
+                </div>
+                <small>Nombre d'exercices rendus sur 10</small>
+            </div>
+
+            <div class="form-group">
+                <label for="Participation_Cours">
+                    <i class="fas fa-comments"></i> Participation en cours
+                </label>
+                <div class="range-group">
+                    <input type="range" id="Participation_Cours" name="Participation_Cours" min="0" max="10" value="5" step="0.5">
+                    <div class="range-value">
+                        <span id="Participation_Cours_val">5</span> /10
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="Tutorat">
+                    <i class="fas fa-chalkboard-user"></i> Tutorat
+                </label>
+                <div class="select-wrapper">
+                    <select id="Tutorat" name="Tutorat" required>
+                        <option value="" disabled selected>Sélectionner</option>
+                        <option value="Oui">Oui</option>
+                        <option value="Non">Non</option>
+                    </select>
+                    <i class="fas fa-chevron-down select-arrow"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- BOUTONS D'ACTION -->
+    <div class="form-actions">
+        <button type="button" class="btn btn-secondary" onclick="resetForm()">
+            <i class="fas fa-redo"></i> Réinitialiser
+        </button>
+        <button type="submit" class="btn btn-primary btn-lg" id="submit-btn">
+            <i class="fas fa-rocket"></i> Prédire la note
+        </button>
+    </div>
+
+    <!-- SPINNER DE CHARGEMENT -->
+    <div id="loading-spinner" class="loading-overlay" style="display: none;">
+        <div class="spinner-container">
+            <div class="spinner"></div>
+            <p>Analyse en cours...</p>
+            <span>L'IA traite les données de l'étudiant</span>
+        </div>
+    </div>
+
+    <!-- MESSAGE D'ERREUR -->
+    <div id="error-message" class="error-alert" style="display: none;">
+        <i class="fas fa-exclamation-triangle"></i>
+        <span id="error-text"></span>
+    </div>
+
+</form>
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/formulaire.js') }}"></script>
+{% endblock %}

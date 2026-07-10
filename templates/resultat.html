@@ -1,0 +1,217 @@
+{% extends "base.html" %}
+{% block title %}Predict'Student - Résultat{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/resultat.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<div class="result-page animate-fade-in">
+    
+    <!-- BANNIÈRE MENTION -->
+    <div class="result-banner mention-{{ mention|lower|replace(' ', '-')|replace('é', 'e') }}">
+        <div class="banner-icon">
+            <i class="fas fa-trophy"></i>
+        </div>
+        <h2>Résultat de la prédiction</h2>
+        <p>Analyse générée par l'intelligence artificielle</p>
+    </div>
+
+    <!-- CARTE PRINCIPALE -->
+    <div class="result-main-card animate-fade-in-up">
+        
+        <!-- JAUGE CIRCULAIRE -->
+        <div class="gauge-container">
+            <div class="gauge">
+                <svg viewBox="0 0 200 200" class="gauge-svg">
+                    <circle class="gauge-bg" cx="100" cy="100" r="85"/>
+                    <circle class="gauge-fill" cx="100" cy="100" r="85" id="gauge-fill"/>
+                </svg>
+                <div class="gauge-center">
+                    <span class="gauge-note" id="gauge-note">{{ note }}</span>
+                    <span class="gauge-total">/20</span>
+                </div>
+            </div>
+            <div class="gauge-label" id="gauge-label">{{ mention }}</div>
+        </div>
+
+        <!-- DÉTAILS DU RÉSULTAT -->
+        <div class="result-details">
+            <div class="detail-card">
+                <div class="detail-icon">
+                    <i class="fas fa-star"></i>
+                </div>
+                <div class="detail-info">
+                    <span class="detail-label">Mention obtenue</span>
+                    <span class="detail-value" id="detail-mention">{{ mention }}</span>
+                </div>
+            </div>
+
+            <div class="detail-card">
+                <div class="detail-icon">
+                    <i class="fas fa-lightbulb"></i>
+                </div>
+                <div class="detail-info">
+                    <span class="detail-label">Conseil personnalisé</span>
+                    <span class="detail-value detail-conseil" id="detail-conseil">{{ conseil }}</span>
+                </div>
+            </div>
+
+            <div class="detail-card">
+                <div class="detail-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <div class="detail-info">
+                    <span class="detail-label">Statut académique</span>
+                    <span class="detail-value" id="detail-statut">
+                        {% if note|float >= 10 %}
+                            <span class="badge badge-success">Admis</span>
+                        {% else %}
+                            <span class="badge badge-danger">Risque d'échec</span>
+                        {% endif %}
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CARTE INTERPRÉTATION -->
+    <div class="interpretation-card animate-fade-in-up">
+        <div class="interpretation-header">
+            <i class="fas fa-chart-line"></i>
+            <h3>Interprétation du résultat</h3>
+        </div>
+        <div class="interpretation-body">
+            <p id="interpretation-text">
+                {% if note|float >= 16 %}
+                    L'étudiant présente un profil d'excellence. Les facteurs clés de cette réussite sont une régularité dans le travail, une forte participation en cours et un environnement favorable. Continuez à encourager ces bonnes pratiques.
+                {% elif note|float >= 14 %}
+                    L'étudiant montre un bon niveau général. Pour atteindre l'excellence, il est recommandé d'augmenter légèrement les heures d'étude hebdomadaires et de maintenir une participation active en cours.
+                {% elif note|float >= 12 %}
+                    Le niveau est correct mais des marges de progression existent. Un renforcement de la régularité dans la remise des exercices et une augmentation du temps d'étude pourraient significativement améliorer les résultats.
+                {% elif note|float >= 10 %}
+                    L'étudiant se situe dans la zone de réussite minimale. Des lacunes sont identifiées. Un accompagnement personnalisé, du tutorat et une réduction des absences sont fortement recommandés pour consolider les acquis.
+                {% else %}
+                    L'étudiant est en situation de risque académique. Une intervention rapide est nécessaire : mise en place d'un tutorat intensif, suivi personnalisé, réduction des absences et augmentation significative du temps d'étude.
+                {% endif %}
+            </p>
+        </div>
+    </div>
+
+    <!-- CARTE RECOMMANDATIONS PERSONNALISÉES -->
+    <div class="recommendations-card animate-fade-in-up">
+        <div class="interpretation-header">
+            <i class="fas fa-clipboard-check"></i>
+            <h3>Recommandations personnalisées</h3>
+            <p class="interpretation-subtitle">Analyse détaillée basée sur les données saisies</p>
+        </div>
+        <div class="recommendations-grid">
+            
+            <!-- RECO 1 : ÉTUDE -->
+            <div class="reco-item" id="reco-etude">
+                <div class="reco-top">
+                    <div class="reco-icon-wrapper">
+                        <i class="fas fa-book reco-icon"></i>
+                    </div>
+                    <span class="reco-badge" id="reco-etude-badge">Excellent</span>
+                </div>
+                <h4>Étude</h4>
+                <p id="reco-etude-text">Chargement...</p>
+                <div class="reco-indicator">
+                    <div class="reco-bar">
+                        <div class="reco-bar-fill" id="reco-etude-bar"></div>
+                    </div>
+                    <span class="reco-data"><i class="fas fa-clock"></i> <strong id="reco-etude-value">0</strong> h/semaine</span>
+                </div>
+            </div>
+
+            <!-- RECO 2 : PRÉSENCE -->
+            <div class="reco-item" id="reco-presence">
+                <div class="reco-top">
+                    <div class="reco-icon-wrapper">
+                        <i class="fas fa-user-check reco-icon"></i>
+                    </div>
+                    <span class="reco-badge" id="reco-presence-badge">Excellent</span>
+                </div>
+                <h4>Présence</h4>
+                <p id="reco-presence-text">Chargement...</p>
+                <div class="reco-indicator">
+                    <div class="reco-bar">
+                        <div class="reco-bar-fill" id="reco-presence-bar"></div>
+                    </div>
+                    <span class="reco-data"><i class="fas fa-calendar-times"></i> <strong id="reco-presence-value">0</strong> absences</span>
+                </div>
+            </div>
+
+            <!-- RECO 3 : EXERCICES -->
+            <div class="reco-item" id="reco-exercices">
+                <div class="reco-top">
+                    <div class="reco-icon-wrapper">
+                        <i class="fas fa-tasks reco-icon"></i>
+                    </div>
+                    <span class="reco-badge" id="reco-exercices-badge">Excellent</span>
+                </div>
+                <h4>Exercices</h4>
+                <p id="reco-exercices-text">Chargement...</p>
+                <div class="reco-indicator">
+                    <div class="reco-bar">
+                        <div class="reco-bar-fill" id="reco-exercices-bar"></div>
+                    </div>
+                    <span class="reco-data"><i class="fas fa-check-double"></i> <strong id="reco-exercices-value">0</strong>/10 soumis</span>
+                </div>
+            </div>
+
+            <!-- RECO 4 : TUTORAT -->
+            <div class="reco-item" id="reco-tutorat">
+                <div class="reco-top">
+                    <div class="reco-icon-wrapper">
+                        <i class="fas fa-hands-helping reco-icon"></i>
+                    </div>
+                    <span class="reco-badge" id="reco-tutorat-badge">Excellent</span>
+                </div>
+                <h4>Tutorat</h4>
+                <p id="reco-tutorat-text">Chargement...</p>
+                <div class="reco-indicator">
+                    <div class="reco-bar">
+                        <div class="reco-bar-fill" id="reco-tutorat-bar"></div>
+                    </div>
+                    <span class="reco-data"><i class="fas fa-file-alt"></i> <strong id="reco-tutorat-value">0</strong>/20 mi-semestre</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- BOUTONS D'ACTION -->
+    <div class="result-actions animate-fade-in-up">
+        <a href="{{ url_for('history') }}" class="btn btn-secondary btn-lg">
+            <i class="fas fa-history"></i> Voir l'historique
+        </a>
+        <a href="{{ url_for('formulaire') }}" class="btn btn-primary btn-lg">
+            <i class="fas fa-redo"></i> Nouvelle prédiction
+        </a>
+        <button class="btn btn-secondary btn-lg" onclick="window.print()">
+            <i class="fas fa-print"></i> Imprimer le résultat
+        </button>
+        <a href="{{ url_for('accueil') }}" class="btn btn-secondary btn-lg">
+            <i class="fas fa-home"></i> Retour à l'accueil
+        </a>
+    </div>
+
+</div>
+
+<script>
+    const DATA = {
+        heuresEtude: parseFloat("{{ heures_etude }}") || 0,
+        absences: parseInt("{{ absences }}") || 0,
+        exercices: parseInt("{{ exercices }}") || 0,
+        noteMiSemestre: parseFloat("{{ note_ms }}") || 0
+    };
+</script>
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/resultat.js') }}"></script>
+{% endblock %}
